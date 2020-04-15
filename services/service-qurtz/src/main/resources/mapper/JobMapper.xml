@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hwsafe.qurtz.mapper.JobMapper">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+	<resultMap type="com.hwsafe.qurtz.domain.Job" id="jobMap">
+		<result property="id" column="id" />
+		<result property="beanName" column="bean_name" />
+		<result property="methodName" column="method_name" />
+		<result property="params" column="params" />
+		<result property="cronExpression" column="cron_expression" />
+		<result property="status" column="status" />
+		<result property="remark" column="remark" />
+		<result property="createTime" column="create_time" />
+		<result property="appliactionName" column="appliaction_name" />
+		<result property="jobStartTime" column="job_start_time" />
+		<result property="jobEndTime" column="job_end_time" />
+		<result property="jobPlanKey" column="JOB_PLAN_KEY" />
+	</resultMap>
+
+	<select id="list" resultMap="jobMap">
+		SELECT
+		*
+		FROM
+		job
+		<where>
+			1=1
+			<if test="beanName != null and beanName.trim() != ''">
+				AND bean_name like '%' || #{beanName} || '%'
+			</if>
+			<if
+				test="appliactionName != null and appliactionName.trim() != ''">
+				AND appliaction_name=#{appliactionName}
+			</if>
+			<if test="status != null">
+				AND status=#{status}
+			</if>
+		</where>
+		ORDER BY create_time DESC
+	</select>
+	<select id="listByTime" resultMap="jobMap">
+		SELECT
+		*
+		FROM
+		job
+		<where>
+			1=1
+			<if test="jobPlanKey != null and jobPlanKey.trim() != ''">
+				AND JOB_PLAN_KEY=#{jobPlanKey}
+			</if>
+			<if test="dayTime!=null and dayTime!=''">
+				AND to_char(job_end_time, 'yyyy-MM-dd') &gt;= #{dayTime}
+			</if>
+
+
+		</where>
+		ORDER BY create_time DESC
+	</select>
+
+
+
+</mapper>

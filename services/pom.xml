@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.hwsafe</groupId>
+		<artifactId>cloud_products</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	<artifactId>services</artifactId>
+	<name>services</name>
+	<description>cloud_products serivces </description>
+	<packaging>pom</packaging>
+
+	<modules>
+		<!--模版SERVICE -->
+		<module>demo-template-service</module>
+		<!--定时任务 -->
+		<module>service-qurtz</module>
+		<!--省 市 县、区 镇、街道 社区、村 -->
+		<module>service-position</module>
+		<!-- 公共服务 -->
+		<module>service-common</module>
+		<!-- 用户 权限 菜单 -->
+		<module>service-system-user</module>
+		<!--日志记录 -->
+		<module>service-log</module>
+		<!--新闻 -->
+		<module>service-hospitalnews</module>
+		<!--隐患 -->
+		<module>service-hidden-peril</module>
+		<!-- 隐患 源 -->
+		<module>service-dangersource</module>
+		<!-- 风险 -->
+		<module>service-risk</module>
+		<!--风险分析 -->
+		<module>service-risk-analysis</module>
+		<!-- 待办 -->
+		<module>service-todolist</module>
+		<!--企业 -->
+		<module>service-enterprise</module>
+		<!--安全作业 -->
+		<module>service-safeoperation</module>
+		<!--系统配置 -->
+		<module>service-system-config</module>
+		<!-- 知识库 -->
+		<module>service-knowledge</module>
+		<!-- 点位监控 -->
+		<module>service-monitor</module>
+		<!-- 健康管理 -->
+		<module>service-health</module>
+		<!-- 应急 -->
+		<module>service-ems</module>
+		<!-- 在线学习 已废弃 -->
+		<module>service-train</module>
+		<!-- 空气质量 -->
+		<module>service-aqi</module>
+		<!-- 爬虫服务 -->
+		<module>service-webmagic</module>
+		<!-- 爬取网站配置 -->
+		<module>service-spider-config</module>
+		<!-- 承包商 -->
+		<module>service-contractor</module>
+		<!-- service-ecs -->
+		<module>service-ecs</module>
+		<!--LDAR 定制中煤 -->
+		<module>service-ldar</module>
+		<!-- 互动交流模块 -->
+		<module>service-chat</module>
+		<!--目标责任 -->
+		<module>service-political</module>
+		<!-- 采集 -->
+		<module>service-monitor-collector</module>
+		<!-- 在线教育 -->
+		<module>service-education</module>
+		<!--设备 -->
+		<module>service-equipment</module>
+		<!--公共设施 园区 -->
+		<module>service-publics</module>
+		<!-- 有效期证书 -->
+		<module>service-license</module>
+		<!--疫情复工服务 -->
+		<module>serivice-resumption-work-person</module>
+	</modules>
+</project>
