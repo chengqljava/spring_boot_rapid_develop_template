@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper
+	namespace="com.hwsafe.position.mapper.PositionCountyMapper">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+	<resultMap type="com.hwsafe.position.domain.PositionCounty"
+		id="positionCountyMap">
+		<result property="id" column="id" />
+		<result property="cityId" column="city_id" />
+		<result property="countyId" column="county_id" />
+		<result property="countyName" column="county_name" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id "id" , city_id "cityId" , county_id "countyId" , county_name
+		"countyName"
+	</sql>
+
+	<sql id="Base_Column_UPPER_List">
+		id, city_id, county_id, county_name
+	</sql>
+
+
+
+
+
+	<select id="list" resultMap="positionCountyMap">
+		SELECT
+		*
+		FROM
+		position_county
+		<where>
+			<if test="id!=null and id!='' and id!='null'">
+				and id=#{id}
+			</if>
+			<if test="cityId!=null and cityId!='' and cityId!='null'">
+				and city_id=#{cityId}
+			</if>
+			<if test="countyId!=null and countyId!='' and countyId!='null'">
+				and county_id=#{countyId}
+			</if>
+			<if
+				test="countyName!=null and countyName!='' and countyName!='null'">
+				and county_name=#{countyName}
+			</if>
+		</where>
+
+	</select>
+
+</mapper>
