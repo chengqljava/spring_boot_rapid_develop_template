@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper
+	namespace="com.hwsafe.position.mapper.PositionProviceMapper">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+	<resultMap type="com.hwsafe.position.domain.PositionProvice"
+		id="positionProviceMap">
+		<result property="id" column="id" />
+		<result property="proviceId" column="provice_id" />
+		<result property="proviceName" column="provice_name" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id "id" , provice_id "proviceId" , provice_name "proviceName"
+	</sql>
+
+	<sql id="Base_Column_UPPER_List">
+		id, provice_id, provice_name
+	</sql>
+
+
+
+
+
+	<select id="list" resultMap="positionProviceMap">
+		SELECT
+		*
+		FROM
+		position_provice
+		<where>
+			<if test="id!=null and id!='' and id!='null'">
+				and id=#{id}
+			</if>
+			<if test="proviceId!=null and proviceId!='' and proviceId!='null'">
+				and provice_id=#{proviceId}
+			</if>
+			<if
+				test="proviceName!=null and proviceName!='' and proviceName!='null'">
+				and provice_name=#{proviceName}
+			</if>
+		</where>
+
+	</select>
+
+</mapper>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper
+	namespace="com.hwsafe.position.mapper.PositionVillageMapper">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+	<resultMap type="com.hwsafe.position.domain.PositionVillage"
+		id="positionVillageMap">
+		<result property="id" column="id" />
+		<result property="townId" column="town_id" />
+		<result property="villageId" column="village_id" />
+		<result property="villageName" column="village_name" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id "id" , town_id "townId" , village_id "villageId" , village_name
+		"villageName"
+	</sql>
+
+	<sql id="Base_Column_UPPER_List">
+		id, town_id, village_id, village_name
+	</sql>
+
+
+
+
+
+	<select id="list" resultMap="positionVillageMap">
+		SELECT
+		*
+		FROM
+		position_village
+		<where>
+			<if test="id!=null and id!='' and id!='null'">
+				and id=#{id}
+			</if>
+			<if test="townId!=null and townId!='' and townId!='null'">
+				and town_id=#{townId}
+			</if>
+			<if test="villageId!=null and villageId!='' and villageId!='null'">
+				and village_id=#{villageId}
+			</if>
+			<if
+				test="villageName!=null and villageName!='' and villageName!='null'">
+				and village_name=#{villageName}
+			</if>
+		</where>
+	</select>
+
+</mapper>

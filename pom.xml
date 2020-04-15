@@ -9,11 +9,11 @@
 		<version>2.1.3.RELEASE</version>
 		<relativePath />
 	</parent>
-	<groupId>com.hwsafe</groupId>
-	<artifactId>cloud_products</artifactId>
+	<groupId>com.chengql</groupId>
+	<artifactId>spring_boot_rapid_develop_template</artifactId>
 	<version>1.0.0</version>
-	<name>cloud_products</name>
-	<description>企业安全风险监测预警云平台</description>
+	<name>spring_boot_rapid_develop_template</name>
+	<description>spring boot 快速开发</description>
 	<packaging>pom</packaging>
 
 	<properties>

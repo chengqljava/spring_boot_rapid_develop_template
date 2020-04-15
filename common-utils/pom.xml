@@ -5,8 +5,8 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>com.hwsafe</groupId>
-		<artifactId>cloud_products</artifactId>
+		<groupId>com.chengql</groupId>
+		<artifactId>spring_boot_rapid_develop_template</artifactId>
 		<version>1.0.0</version>
 	</parent>
 	<artifactId>common-utils</artifactId>

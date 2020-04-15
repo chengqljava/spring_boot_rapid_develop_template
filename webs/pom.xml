@@ -4,8 +4,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>com.hwsafe</groupId>
-		<artifactId>cloud_products</artifactId>
+		<groupId>com.chegnql</groupId>
+		<artifactId>spring_boot_rapid_develop_template</artifactId>
 		<version>1.0.0</version>
 	</parent>
 	<artifactId>webs</artifactId>
@@ -13,11 +13,6 @@
 	<description>universe-hcs webs </description>
 	<packaging>pom</packaging>
 	<modules>
-		<!-- 监测监控 -->
-		<module>vguard-monitor</module>
-		<!--安全风险监测预警云系统-->
-		<module>web-hwsafe-cloud</module>
-		<!-- 安全风险监测预警云系统微信 -->
-		<module>wx-hwsafe-cloud</module>
+	
 	</modules>
 </project>
