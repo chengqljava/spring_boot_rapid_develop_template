@@ -1,0 +1,16 @@
+DROP TABLE IF EXISTS ${tableEntity.tableName!};
+CREATE TABLE ${tableEntity.tableName} (
+  <%if(tableEntity.pk!!=null){%>
+    `${tableEntity.pk.columnName!}` ${tableEntity.pk.dataType!} ${(tableEntity.pk.dataPrecision!!=null&&tableEntity.pk.dataScale!!=null)?('('+tableEntity.pk.dataPrecision!+','+tableEntity.pk.dataScale!+')'):(tableEntity.pk.dataLength!!=null?('('+tableEntity.pk.dataLength+')'):'')} ${('N'==tableEntity.pk.nullAble!)?'NOT NULL':''} ${tableEntity.pk.comments!!=null?(tableEntity.pk.comments!):''},
+  <%}%>
+    <%for(item in tableEntity.columnEntityList!){%>
+     `${item.columnName!}` ${item.dataType!} ${(item.dataPrecision!!=null&&item.dataScale!!=null)?(((('FLOAT'==item.dataType!||'DOUBLE'==item.dataType!)||('INTEGER'!=item.dataType!&&0!=item.dataScale!)))?('('+item.dataPrecision+','+item.dataScale+')'):('('+item.dataPrecision+')')):(('FLOAT'==item.dataType!||'DOUBLE'==item.dataType!)?('('+item.dataLength+',0)'):(item.dataLength!!=null?('('+item.dataLength+')'):''))} ${item.dataDefault!!=null?('DEFAULT '+item.dataDefault!):''} ${('N'==item.nullAble!)?'NOT NULL':''} ${item.comments!!=null?(item.comments!):''} ${(itemLP.last!false)?'':','}
+    <%}%>
+  <%if(tableEntity.pk!!=null){%>
+   ,PRIMARY KEY (`${tableEntity.pk.columnName!}`)
+  <%}%>
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT '${tableEntity.commonts!}';
+
+
+
+
