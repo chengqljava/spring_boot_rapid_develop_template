@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper
+	namespace="com.hwsafe.accept.point.mapper.MacHistory5mMapper">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+	<resultMap type="com.hwsafe.accept.point.domain.MacHistory5m"
+		id="macHistory5mMap">
+		<result property="datarecordid" column="DATARECORDID" />
+		<result property="probeid" column="PROBEID" />
+		<result property="chroval" column="CHROVAL" />
+		<result property="state" column="STATE" />
+		<result property="createtime" column="CREATETIME" />
+		<result property="entname" column="ENTNAME" />
+		<result property="probename" column="PROBENAME" />
+		<result property="probenum" column="PROBENUM" />
+		<result property="unit" column="UNIT" />
+		<result property="businessinfoid" column="BUSINESSINFOID" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		DATARECORDID "datarecordid" , PROBEID "probeid" , CHROVAL "chroval" , STATE
+		"state" , CREATETIME "createtime" , ENTNAME "entname" , PROBENAME
+		"probename" , PROBENUM "probenum" , UNIT "unit" , BUSINESSINFOID
+		"businessinfoid"
+	</sql>
+
+	<sql id="Base_Column_UPPER_List">
+		DATARECORDID, PROBEID, CHROVAL, STATE, CREATETIME, ENTNAME, PROBENAME, PROBENUM,
+		UNIT, BUSINESSINFOID
+	</sql>
+
+
+
+
+
+	<select id="list" resultMap="macHistory5mMap">
+		SELECT
+		*
+		FROM
+		MAC_HISTORY_5M
+		<where>
+			<if
+				test="datarecordid!=null and datarecordid!='' and datarecordid!='null'">
+				and DATARECORDID=#{datarecordid} ,
+			</if>
+			<if test="probeid!=null and probeid!='' and probeid!='null'">
+				and PROBEID=#{probeid} ,
+			</if>
+			<if test="chroval!=null and chroval!='' and chroval!='null'">
+				and CHROVAL=#{chroval} ,
+			</if>
+			<if test="state!=null and state!='' and state!='null'">
+				and STATE=#{state} ,
+			</if>
+			<if
+				test="createtime!=null and createtime!='' and createtime!='null'">
+				and CREATETIME=#{createtime} ,
+			</if>
+			<if test="entname!=null and entname!='' and entname!='null'">
+				and ENTNAME=#{entname} ,
+			</if>
+			<if test="probename!=null and probename!='' and probename!='null'">
+				and PROBENAME=#{probename} ,
+			</if>
+			<if test="probenum!=null and probenum!='' and probenum!='null'">
+				and PROBENUM=#{probenum} ,
+			</if>
+			<if test="unit!=null and unit!='' and unit!='null'">
+				and UNIT=#{unit} ,
+			</if>
+			<if
+				test="businessinfoid!=null and businessinfoid!='' and businessinfoid!='null'">
+				and BUSINESSINFOID=#{businessinfoid}
+			</if>
+		</where>
+		<choose>
+			<when
+				test="(descs != null and descs.length > 0) and  (ascs!=null and ascs.length > 0)">
+				ORDER BY
+				<foreach collection="descs" item="item" open=" "
+					separator="," close=" ">
+					${item} DESC
+				</foreach>
+				,
+				<foreach collection="ascs" item="item" open=" "
+					separator="," close=" ">
+					${item} ASC
+				</foreach>
+			</when>
+			<when test="descs != null and descs.length > 0">
+				ORDER BY
+				<foreach collection="descs" item="item" open=" "
+					separator="," close=" ">
+					${item} DESC
+				</foreach>
+			</when>
+			<when test="ascs!=null and ascs.length > 0">
+				ORDER BY
+				<foreach collection="ascs" item="item" open=" "
+					separator="," close=" ">
+					${item} ASC
+				</foreach>
+			</when>
+			<otherwise>
+				ORDER BY CREATE_TIME DESC,EHDC.CHECK_DATE DESC
+			</otherwise>
+		</choose>
+	</select>
+
+</mapper>

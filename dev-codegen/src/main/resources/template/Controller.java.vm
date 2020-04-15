@@ -1,0 +1,215 @@
+package ${package}.controller.${classname};
+import java.util.Arrays;
+import java.util.List;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.hwsafe.utils.AjaxResult;
+import com.hwsafe.utils.BeanMapper;
+
+
+import ${package}.domain.${className};
+import ${package}.domain.dto.${className}DTO;
+import ${package}.domain.query.${className}Query;
+import ${package}.service.${className}Service;
+
+
+
+/**
+ * ${comments}
+ * 
+ * @author ${author}
+ * @email ${email}
+ * @date ${datetime}
+ */
+@Controller
+@RequestMapping(value = "/${classname}")
+public class ${className}Controller {
+    private static final Logger LOG = Logger.getLogger(${className}Controller.class);
+	@Autowired
+	private ${className}Service ${classname}Service;
+	
+	/**
+     * 根据 ID 获得实体对象
+     *
+     */
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET, consumes = MediaType.ALL_VALUE)
+    @ResponseBody
+    public AjaxResult<${className}DTO> get${className}(@PathVariable String id) {
+        //TODO 参数有效性校验
+        ${className} ${classname} = ${classname}Service.selectById(id);
+        return new AjaxResult<${className}DTO>(BeanMapper.map(${classname},
+             ${className}DTO.class));
+    }
+    
+    
+    /**
+     * 根据 ID 修改实体对象
+     *
+     */
+    @RequestMapping(value="/edit/{id}", method = RequestMethod.GET, consumes = MediaType.ALL_VALUE)
+	public String edit(@PathVariable String id, Model model) {
+	    //TODO 参数有效性校验
+		try {
+			${className} ${classname} = ${classname}Service.selectById(id);;
+			model.addAttribute("entity", ${classname});
+		} catch (Exception e) {
+			LOG.error(e.getMessage());
+			e.printStackTrace();
+		}
+		return "";
+	}
+	
+	/* 插入一条记录
+     *
+     * @param entity 实体对象*/
+	@RequestMapping(value = "/save", method = RequestMethod.POST, consumes = MediaType.ALL_VALUE)
+    @ResponseBody
+    public AjaxResult<String> save${className}(@ModelAttribute(name ="entity" ) ${className}DTO ${classname}DTO) {
+               //TODO 参数有效性校验
+              AjaxResult<String> ajaxResult = new AjaxResult<String>();
+        
+         try {
+             ${classname}Service.save(BeanMapper.map(${classname}DTO, ${className}.class));
+             ajaxResult.setValue("保存成功");
+         } catch (Exception e) {
+				LOG.error(e);
+				ajaxResult.setSuccess(false);
+				ajaxResult.setErrorMsg("保存失败!" + e.getMessage());
+			}
+        return ajaxResult;
+    }
+    
+    /* 更新一条记录
+     *
+     * @param entity 实体对象*/
+    
+    @RequestMapping(value = "/update", method = RequestMethod.POST, consumes = MediaType.ALL_VALUE)
+    @ResponseBody
+    public AjaxResult<String> update${className}(@ModelAttribute(name ="entity" ) ${className} ${classname}) {
+               //TODO 参数有效性校验
+              AjaxResult<String> ajaxResult = new AjaxResult<String>();
+        
+         try {
+             ${classname}Service.updateById(${classname});
+             ajaxResult.setValue("编辑成功");
+         } catch (Exception e) {
+				LOG.error(e);
+				ajaxResult.setSuccess(false);
+				ajaxResult.setErrorMsg("编辑失败" + e.getMessage());
+			}
+        return ajaxResult;
+    }
+    
+  	/**
+	 * @Title:delete 单条删除
+	 * @param id     id
+	 * @param response 响应对象
+	 */
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
+	@ResponseBody
+	public AjaxResult<String> delete(@PathVariable String id) {
+	   //TODO 参数有效性校验
+		AjaxResult<String> ajaxResult = new AjaxResult<String>();
+		try {
+				${classname}Service.deleteById(id);
+				ajaxResult.setValue("删除成功");
+		} catch (Exception e) {
+			ajaxResult.setSuccess(false);
+			ajaxResult.setErrorMsg("删除失败!");
+			LOG.error(e);
+			e.printStackTrace();
+		}
+		return ajaxResult;
+	}
+	
+	 	/**
+	 * @Title:deleteIds 批量删除
+	 * @param ids     ids
+	 * @param response 响应对象
+	 */
+	@RequestMapping(value = "/deleteIds", method = RequestMethod.POST)
+	@ResponseBody
+	public AjaxResult<String> deleteIds(@PathVariable String[] ids) {
+	   //TODO 参数有效性校验
+		AjaxResult<String> ajaxResult = new AjaxResult<String>();
+		try {
+		    if (ids.length > 0) {
+				${classname}Service.deleteByIds(Arrays.asList(ids));
+				ajaxResult.setValue("删除成功");
+			}
+		} catch (Exception e) {
+			ajaxResult.setSuccess(false);
+			ajaxResult.setErrorMsg("删除失败!");
+			LOG.error(e);
+			e.printStackTrace();
+		}
+		return ajaxResult;
+	}
+	
+	
+		/**
+	 * @Title:
+	 * @Description (根据条件查询数据分页结果集).
+	 * @return Page 返回数据分页结果集
+	 */
+	@RequestMapping(value = "/list/page", method = RequestMethod.POST)
+	@ResponseBody
+	public AjaxResult<Page<${className}DTO>> ${classname}ListPage(${className}Query ${classname}Query) {
+	    //TODO 参数有效性校验
+	    AjaxResult<Page<${className}DTO>> ajaxResult = new AjaxResult<Page<${className}DTO>>();
+		try {
+			Page<${className}> ${classname}Page = ${classname}Service.listPage(${classname}Query);
+			Page<${className}DTO> ${classname}PageDTO=new Page<${className}DTO>();
+			${classname}PageDTO.setTotal(${classname}Page.getTotal());
+			${classname}PageDTO.setCurrent(${classname}Page.getCurrent());
+			${classname}PageDTO.setPages(${classname}Page.getPages());
+			${classname}PageDTO.setSize(${classname}Page.getSize());
+			${classname}PageDTO.setRecords(BeanMapper.mapList(${classname}Page.getRecords(), ${className}DTO.class));
+			ajaxResult.setValue(${classname}PageDTO);
+			return ajaxResult;
+		} catch (Exception e) {
+			LOG.error(e.getMessage());
+			e.printStackTrace();
+			ajaxResult.setSuccess(false);
+		    ajaxResult.setErrorMsg( e.getMessage());
+		}
+		return ajaxResult;
+	}
+	
+	
+		/**
+	 * @Title:
+	 * @Description (根据条件查询数据结果集).
+	 * @return List 返回数据结果集
+	 */
+	@RequestMapping(value = "/list", method = RequestMethod.POST)
+	@ResponseBody
+	public AjaxResult<List<${className}DTO>> ${classname}List(${className}Query ${classname}Query) {
+	    //TODO 参数有效性校验
+	    AjaxResult<List<${className}DTO>> ajaxResult = new AjaxResult<List<${className}DTO>>();
+		try {
+			List<${className}> ${classname}List = ${classname}Service.list(${classname}Query);
+			List<${className}DTO> ${classname}ListDTO=BeanMapper.mapList(${classname}List, ${className}DTO.class);
+			ajaxResult.setValue(${classname}ListDTO);
+			return ajaxResult;
+		} catch (Exception e) {
+			LOG.error(e.getMessage());
+			e.printStackTrace();
+			ajaxResult.setSuccess(false);
+		    ajaxResult.setErrorMsg(e.getMessage());
+		}
+		return ajaxResult;
+	}
+	
+}

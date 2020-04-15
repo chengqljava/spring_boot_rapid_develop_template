@@ -1,0 +1,21 @@
+package ${package}.mapper;
+
+import java.util.List;
+
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import ${package}.domain.${className};
+import ${package}.domain.query.${className}Query;
+
+/**
+ * ${comments}
+ * 
+ * @author ${author}
+ * @email ${email}
+ * @date ${datetime}
+ */
+public interface ${className}Mapper extends BaseMapper<${className}>{
+	
+	List<${className}> list(${className}Query ${classname}Query);
+	
+}

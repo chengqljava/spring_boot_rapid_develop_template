@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hwsafe.template.mapper.CodeGenDao">
+	<select id="queryTable" resultType="map" parameterType="string">
+		select
+		TABLE_NAME "tableName",COMMENTS "tableComment" from user_tab_comments
+		where Table_Name=#{tableName}
+	</select>
+	<select id="queryColumns" resultType="map"
+		parameterType="string">
+		select COLUMN_NAME "columnName",DATA_TYPE "dataType"
+		from user_tab_columns
+		where Table_Name=#{tableName}
+	</select>
+	<!-- 获取列及所有信息 -->
+	<select id="queryColumnsAllMessage"
+		resultType="com.hwsafe.template.entity.OracelColumnAllMessageEntity"
+		parameterType="string">
+		select
+		table_Name "tableName",
+		COLUMN_NAME "columnName",
+		DATA_TYPE "dataType",
+		data_Type_Mod "dataTypeMod",
+		data_Type_Owner "dataTypeOwner",
+		data_length "dataLength",
+		data_precision "dataPrecision",
+		data_Scale "dataScale",
+		nullAble "nullAble",
+		COLUMN_ID "columnId",
+		default_Length "defaultLength",
+		char_Length "charLength"
+		from user_tab_columns
+		where Table_Name=#{tableName}
+	</select>
+	<select id="queryColumnsComment" resultType="map"
+		parameterType="string">
+		select TABLE_NAME "tableName",COLUMN_NAME
+		"columnName",COMMENTS
+		"columnComment" from all_col_comments where
+		Table_Name=#{tableName}
+	</select>
+	<select id="queryOracleTables" resultType="java.lang.String">
+		select table_name from
+		user_tables
+	</select>
+
+	<update id="queryOracleAddColumn" parameterType="string">
+		ALTER TABLE
+		#{tableName}
+		ADD ${columnName} VARCHAR2(32) NULL ;
+	</update>
+	<!-- 主键列名 -->
+	<select id="principalColumnName" resultType="java.lang.String"
+		parameterType="string">
+		select a.column_name
+		from user_cons_columns a,
+		user_constraints b
+		where a.constraint_name = b.constraint_name
+		and
+		b.constraint_type = 'P' and a.table_name = #{tableName}
+	</select>
+
+	<!-- 表名注释 -->
+	<select id="tableComments"
+		resultType="com.hwsafe.template.entity.OracleTableComments"
+		parameterType="string">
+		select table_Name "tableName",table_TYPE "tableType",comments
+		"comments" from user_tab_comments
+		<if test="tableName!=null and tableName!='' and tableName!='null'">
+			WHERE TABLE_NAME=#{tableName}
+		</if>
+	</select>
+	<!-- 列名注释 -->
+	<select id="columnComments"
+		resultType="com.hwsafe.template.entity.OracleColumnComments"
+		parameterType="string">
+		select table_Name "tableName",column_name "columnName",comments
+		"comments" from user_col_comments
+		<if test="tableName!=null and tableName!='' and tableName!='null'">
+			WHERE TABLE_NAME=#{tableName}
+		</if>
+	</select>
+</mapper>

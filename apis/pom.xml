@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.chengql</groupId>
+		<artifactId>spring_boot_rapid_develop_template</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	<artifactId>apis</artifactId>
+	<name>apis</name>
+	<description>cloud_products apis </description>
+	<packaging>pom</packaging>
+	<modules>
+		<!-- 模版 -->
+		<module>demo-template-api</module>
+		<!-- 手机端接口 -->
+		<module>vguard-rnmobile</module>
+		<!-- 第三方对外服务 -->
+		<module>ott-api-service</module>
+		<!-- 第三方WebService对外服务 -->
+		<module>ott-web-service</module>
+		<!-- 微信公众号 -->
+		<module>wx-api-service</module>
+		<!--获取服务并转发到指定 http端口 -->
+		<module>gain-transpond-service</module>
+		<!--获取接受转发数据并保存 -->
+		<module>gain-accept-service</module>
+		<!--静态文件服务 -->
+		<module>static-file-service</module>
+
+		<!--视频预警处理服务 -->
+		<module>videoalarm-api-service</module>
+	</modules>
+</project>
