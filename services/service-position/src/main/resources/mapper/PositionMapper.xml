@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hwsafe.position.mapper.PositionMapper">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+	<resultMap type="com.hwsafe.position.domain.Position"
+		id="positionMap">
+		<result property="id" column="id" />
+		<result property="provinceId" column="province_id" />
+		<result property="provinceName" column="province_name" />
+		<result property="cityId" column="city_id" />
+		<result property="cityName" column="city_name" />
+		<result property="countyId" column="county_id" />
+		<result property="countyName" column="county_name" />
+		<result property="townId" column="town_id" />
+		<result property="townName" column="town_name" />
+		<result property="villageId" column="village_id" />
+		<result property="villageName" column="village_name" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id "id" , province_id "provinceId" , province_name "provinceName" ,
+		city_id "cityId" , city_name "cityName" , county_id "countyId" ,
+		county_name "countyName" , town_id "townId" , town_name "townName" ,
+		village_id "villageId" , village_name "villageName"
+	</sql>
+
+	<sql id="Base_Column_UPPER_List">
+		id, province_id, province_name, city_id, city_name, county_id,
+		county_name, town_id, town_name, village_id, village_name
+	</sql>
+
+
+
+
+
+	<select id="list" resultMap="positionMap">
+		SELECT
+		*
+		FROM
+		position
+	</select>
+
+</mapper>
