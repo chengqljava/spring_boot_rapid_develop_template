@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hwsafe.codegen.repository.CodeGenDao">
+	<select id="queryTable" resultType="map" parameterType="string">
+		select TABLE_NAME "tableName",COMMENTS "tableComment" from user_tab_comments
+		where Table_Name=#{tableName}
+	</select>
+	<select id="queryColumns" resultType="map"
+		parameterType="string">
+		select COLUMN_NAME "columnName",DATA_TYPE "dataType" from user_tab_columns
+		where Table_Name=#{tableName}
+	</select>
+	<select id="queryColumnsComment" resultType="map"
+		parameterType="string">
+		select TABLE_NAME "tableName",COLUMN_NAME "columnName",COMMENTS
+		"columnComment" from all_col_comments where Table_Name=#{tableName}
+	</select>
+	<select id="queryOracleTables" resultType="java.lang.String">
+		select table_name from user_tables
+	</select>
+
+	<update id="queryOracleAddColumn" parameterType="string">
+		ALTER TABLE #{tableName}
+		ADD ${columnName} VARCHAR2(32) NULL ;
+	</update>
+</mapper>

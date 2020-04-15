@@ -1,0 +1,30 @@
+server:  
+  port: 8181
+
+spring:  
+  application:
+    name: code-gen
+  datasource:
+    url: jdbc:oracle:thin:@localhost:1521/ORCL
+    username: HCS_MULTI_TENANCY
+    password: HCS_MULTI_TENANCY
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    type: com.alibaba.druid.pool.DruidDataSource
+  druid:
+    initialSize: 5 
+    minIdle: 5    
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: false
+    maxPoolPreparedStatementPerConnectionSize: 20
+    filters: stat,log4j
+    connectionProperties: 'druid.stat.mergeSql: true;druid.stat.slowSqlMillis: 5000'
+ 
+mybatis:
+  mapper-locations: classpath:mapper/oracle/*.xml  
