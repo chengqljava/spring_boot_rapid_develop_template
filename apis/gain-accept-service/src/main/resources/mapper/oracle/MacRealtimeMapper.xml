@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper
+	namespace="com.hwsafe.accept.point.mapper.MacRealtimeMapper">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+	<resultMap type="com.hwsafe.accept.point.domain.MacRealtime"
+		id="macRealtimeMap">
+		<result property="realtimeid" column="REALTIMEID" />
+		<result property="probeid" column="PROBEID" />
+		<result property="chroval" column="CHROVAL" />
+		<result property="state" column="STATE" />
+		<result property="createtime" column="CREATETIME" />
+		<result property="updatetime" column="UPDATETIME" />
+		<result property="iserasure" column="ISERASURE" />
+		<result property="starttime" column="STARTTIME" />
+		<result property="endtime" column="ENDTIME" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		REALTIMEID "realtimeid" , PROBEID "probeid" , CHROVAL "chroval" , STATE "state"
+		, CREATETIME "createtime" , UPDATETIME "updatetime" , ISERASURE
+		"iserasure" , STARTTIME "starttime" , ENDTIME "endtime"
+	</sql>
+
+	<sql id="Base_Column_UPPER_List">
+		REALTIMEID, PROBEID, CHROVAL, STATE, CREATETIME, UPDATETIME, ISERASURE,
+		STARTTIME, ENDTIME
+	</sql>
+
+
+
+
+
+	<select id="list" resultMap="macRealtimeMap">
+		SELECT
+		*
+		FROM
+		MAC_REALTIME
+		<where>
+			<if
+				test="realtimeid!=null and realtimeid!='' and realtimeid!='null'">
+				and REALTIMEID=#{realtimeid} ,
+			</if>
+			<if test="probeid!=null and probeid!='' and probeid!='null'">
+				and PROBEID=#{probeid} ,
+			</if>
+			<if test="chroval!=null and chroval!='' and chroval!='null'">
+				and CHROVAL=#{chroval} ,
+			</if>
+			<if test="state!=null and state!='' and state!='null'">
+				and STATE=#{state} ,
+			</if>
+			<if
+				test="createtime!=null and createtime!='' and createtime!='null'">
+				and CREATETIME=#{createtime} ,
+			</if>
+			<if
+				test="updatetime!=null and updatetime!='' and updatetime!='null'">
+				and UPDATETIME=#{updatetime} ,
+			</if>
+			<if test="iserasure!=null and iserasure!='' and iserasure!='null'">
+				and ISERASURE=#{iserasure} ,
+			</if>
+			<if test="starttime!=null and starttime!='' and starttime!='null'">
+				and STARTTIME=#{starttime} ,
+			</if>
+			<if test="endtime!=null and endtime!='' and endtime!='null'">
+				and ENDTIME=#{endtime}
+			</if>
+		</where>
+		<choose>
+			<when
+				test="(descs != null and descs.length > 0) and  (ascs!=null and ascs.length > 0)">
+				ORDER BY
+				<foreach collection="descs" item="item" open=" "
+					separator="," close=" ">
+					${item} DESC
+				</foreach>
+				,
+				<foreach collection="ascs" item="item" open=" "
+					separator="," close=" ">
+					${item} ASC
+				</foreach>
+			</when>
+			<when test="descs != null and descs.length > 0">
+				ORDER BY
+				<foreach collection="descs" item="item" open=" "
+					separator="," close=" ">
+					${item} DESC
+				</foreach>
+			</when>
+			<when test="ascs!=null and ascs.length > 0">
+				ORDER BY
+				<foreach collection="ascs" item="item" open=" "
+					separator="," close=" ">
+					${item} ASC
+				</foreach>
+			</when>
+			<otherwise>
+				ORDER BY CREATE_TIME DESC,EHDC.CHECK_DATE DESC
+			</otherwise>
+		</choose>
+	</select>
+
+</mapper>

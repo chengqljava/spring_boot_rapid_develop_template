@@ -1,0 +1,21 @@
+logging:
+  level:
+    org.springframework.web: INFO
+    com.github.binarywang.demo.wx.mp: DEBUG
+    me.chanjar.weixin: DEBUG
+spring:
+  mvc:
+    view:
+      prefix: /templates/
+      suffix: .html  
+wx:
+  mp:
+    configs:
+      - appId: wx90eb9a7b428fea45  #公众号的appid
+        secret: e07b9cff68e1f6c092b0bd256623d4d2 #公众号的appsecret
+        token: hwtoken #接口配置里的Token值
+        aesKey: J9HisB7r8pgJEiTcnLJjCtly668Pnob2yMzFmlfXUTS  #接口配置里的EncodingAESKey值
+      - appId: wx07308887f42cf969  #c测试公众号appid
+        secret: 8840d2a16eabe7de16c0e9c1d0ce915a  #测试公众号的appsecret
+        token: abcd
+        aesKey: yJDDpWY3kbLm3uJ3yUQVX8REL4evZ5Bh3luNgmb6sVy        
