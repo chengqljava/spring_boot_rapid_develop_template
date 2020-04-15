@@ -4,9 +4,9 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>com.hwsafe</groupId>
-		<artifactId>webs</artifactId>
-		<version>0.0.1</version>
+		<groupId>com.chengql</groupId>
+		<artifactId>demo-webs</artifactId>
+		<version>1.0.0</version>
 	</parent>
 	<artifactId>demo-wx-template-web</artifactId>
 	<name>demo-wx-template-web</name>

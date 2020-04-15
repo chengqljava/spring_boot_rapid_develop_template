@@ -29,8 +29,8 @@
 		<mybatis.plus.version>3.2.0</mybatis.plus.version>
 		<!-- 数据库连接池 -->
 		<druid.version>1.1.9</druid.version>
-		<!-- 汉威 企业安全风险监测预警云平台 版本-->
-		<hwsafe.version>1.0.0</hwsafe.version>
+		<!-- chengql 版本-->
+		<chengql.version>1.0.0</chengql.version>
 		<!-- 自动生成接口文档和客户端服务端代码，做到调用端代码、服务端代码以及接口文档的一致性 -->
 		<swagger.version>2.7.0</swagger.version>
 		<!-- 定时任务 -->
@@ -94,6 +94,6 @@
 		<!--代码自动生成工具 -->
 		<module>dev-codegen</module>
 		<!--项目各种事例-->
-		<module>demo-web</module>
+		<module>demo-webs</module>
 	</modules>
 </project>

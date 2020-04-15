@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.chengql</groupId>
+		<artifactId>spring_boot_rapid_develop_template</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	<artifactId>demo-webs</artifactId>
+	<name>demo-webs</name>
+	<description>demo-webs</description>
+	<packaging>pom</packaging>
+	<modules>
+	<!-- 模版微信 -->
+	<module>demo-wx-template-web</module>
+	<!-- 模版 WEB -->
+	<module>demo-template-web</module>
+	<!-- 省市县 -->
+	<module>demo-template-position</module>
+	<!-- oracel数据库转化为msyql 生成表结构语句-->
+	<module>demo-template-oracle-to-mysql</module>
+	<!-- 多租户  -->
+	<module>demo-template-multi-tenancy-web</module>
+	
+	</modules>
+</project>

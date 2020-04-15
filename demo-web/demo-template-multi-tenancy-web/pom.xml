@@ -4,13 +4,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>com.hwsafe</groupId>
-		<artifactId>webs</artifactId>
-		<version>0.0.1</version>
+		<groupId>com.chengql</groupId>
+		<artifactId>demo-webs</artifactId>
+		<version>1.0.0</version>
 	</parent>
-	<artifactId>demo-template-oracle-to-mysql</artifactId>
-	<name>demo-template-oracle-to-mysql</name>
-	<description>oracel 转化为mysql</description>
+	<artifactId>demo-template-multi-tenancy-web</artifactId>
+	<name>demo-template-web</name>
+	<description>demo-template-multi-tenancy-web</description>
 
 	<dependencies>
 		<dependency>
@@ -89,9 +89,9 @@
 			<version>${swagger.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>com.hwsafe</groupId>
+			<groupId>com.chengql</groupId>
 			<artifactId>common-utils</artifactId>
-			<version>${hwsafe.version}</version>
+			<version>${chengql.version}</version>
 		</dependency>
 		<!-- beetl模版框架 -->
 		<dependency>
@@ -128,191 +128,14 @@
 			<artifactId>spring-boot-starter-amqp</artifactId>
 		</dependency>
 		<!--引入服务 -->
-		<!--省 市 县、区 镇、街道 社区、村 -->
 		<dependency>
-			<groupId>com.hwsafe</groupId>
-			<artifactId>service-position</artifactId>
-			<version>${hwsafe.version}</version>
+			<groupId>com.chengql</groupId>
+			<artifactId>demo-template-service</artifactId>
+			<version>${chengql.version}</version>
 		</dependency>
-		<!-- 公共服务 -->
-		<dependency>
-			<groupId>com.hwsafe</groupId>
-			<artifactId>service-common</artifactId>
-			<version>${hwsafe.version}</version>
-		</dependency>
-		<!-- 用户 权限 菜单 -->
-		<dependency>
-			<groupId>com.hwsafe</groupId>
-			<artifactId>service-system-user</artifactId>
-			<version>${hwsafe.version}</version>
-		</dependency>
-		<!--日志记录 -->
-		<dependency>
-			<groupId>com.hwsafe</groupId>
-			<artifactId>service-log</artifactId>
-			<version>${hwsafe.version}</version>
-		</dependency>
-		<!--新闻 -->
-		<dependency>
-			<groupId>com.hwsafe</groupId>
-			<artifactId>service-hospitalnews</artifactId>
-			<version>${hwsafe.version}</version>
-		</dependency>
-		<!--隐患 -->
-		<dependency>
-			<groupId>com.hwsafe</groupId>
-			<artifactId>service-hidden-peril</artifactId>
-			<version>${hwsafe.version}</version>
-		</dependency>
-		<!-- 隐患 源 -->
-		<dependency>
-			<groupId>com.hwsafe</groupId>
-			<artifactId>service-dangersource</artifactId>
-			<version>${hwsafe.version}</version>
-		</dependency>
-		<!-- 风险 -->
-		<dependency>
-			<groupId>com.hwsafe</groupId>
-			<artifactId>service-risk</artifactId>
-			<version>${hwsafe.version}</version>
-		</dependency>
-		<!--风险分析 -->
-		<dependency>
-			<groupId>com.hwsafe</groupId>
-			<artifactId>service-risk-analysis</artifactId>
-			<version>${hwsafe.version}</version>
-		</dependency>
-		<!-- 待办 -->
-		<dependency>
-			<groupId>com.hwsafe</groupId>
-			<artifactId>service-todolist</artifactId>
-			<version>${hwsafe.version}</version>
-		</dependency>
-		<!--企业 -->
-		<dependency>
-			<groupId>com.hwsafe</groupId>
-			<artifactId>service-enterprise</artifactId>
-			<version>${hwsafe.version}</version>
-		</dependency>
-		<!--安全作业 -->
-		<dependency>
-			<groupId>com.hwsafe</groupId>
-			<artifactId>service-safeoperation</artifactId>
-			<version>${hwsafe.version}</version>
-		</dependency>
-		<!--系统配置 -->
-		<dependency>
-			<groupId>com.hwsafe</groupId>
-			<artifactId>service-system-config</artifactId>
-			<version>${hwsafe.version}</version>
-		</dependency>
-		<!-- 知识库 -->
-		<dependency>
-			<groupId>com.hwsafe</groupId>
-			<artifactId>service-knowledge</artifactId>
-			<version>${hwsafe.version}</version>
-		</dependency>
-		<!-- 点位监控 -->
-		<dependency>
-			<groupId>com.hwsafe</groupId>
-			<artifactId>service-monitor</artifactId>
-			<version>${hwsafe.version}</version>
-		</dependency>
-		<!-- 健康管理 -->
-		<dependency>
-			<groupId>com.hwsafe</groupId>
-			<artifactId>service-health</artifactId>
-			<version>${hwsafe.version}</version>
-		</dependency>
-		<!-- 应急 -->
-		<dependency>
-			<groupId>com.hwsafe</groupId>
-			<artifactId>service-ems</artifactId>
-			<version>${hwsafe.version}</version>
-		</dependency>
-		<!-- 在线学习 已废弃 -->
-		<dependency>
-			<groupId>com.hwsafe</groupId>
-			<artifactId>service-train</artifactId>
-			<version>${hwsafe.version}</version>
-		</dependency>
-		<!-- 空气质量 -->
-		<dependency>
-			<groupId>com.hwsafe</groupId>
-			<artifactId>service-aqi</artifactId>
-			<version>${hwsafe.version}</version>
-		</dependency>
-		<!-- 爬取网站配置 -->
-		<dependency>
-			<groupId>com.hwsafe</groupId>
-			<artifactId>service-spider-config</artifactId>
-			<version>${hwsafe.version}</version>
-		</dependency>
-		<!-- 承包商 -->
-		<dependency>
-			<groupId>com.hwsafe</groupId>
-			<artifactId>service-contractor</artifactId>
-			<version>${hwsafe.version}</version>
-		</dependency>
-		<!-- service-ecs -->
-		<dependency>
-			<groupId>com.hwsafe</groupId>
-			<artifactId>service-ecs</artifactId>
-			<version>${hwsafe.version}</version>
-		</dependency>
-		<!--LDAR 定制中煤 -->
-		<dependency>
-			<groupId>com.hwsafe</groupId>
-			<artifactId>service-ldar</artifactId>
-			<version>${hwsafe.version}</version>
-		</dependency>
-		<!-- 互动交流模块 -->
-		<dependency>
-			<groupId>com.hwsafe</groupId>
-			<artifactId>service-chat</artifactId>
-			<version>${hwsafe.version}</version>
-		</dependency>
-		<!--目标责任 -->
-		<dependency>
-			<groupId>com.hwsafe</groupId>
-			<artifactId>service-political</artifactId>
-			<version>${hwsafe.version}</version>
-		</dependency>
-		<!-- 采集 -->
-		<dependency>
-			<groupId>com.hwsafe</groupId>
-			<artifactId>service-monitor-collector</artifactId>
-			<version>${hwsafe.version}</version>
-		</dependency>
-		<!-- 在线教育 -->
-		<dependency>
-			<groupId>com.hwsafe</groupId>
-			<artifactId>service-education</artifactId>
-			<version>${hwsafe.version}</version>
-		</dependency>
-		<!--设备 -->
-		<dependency>
-			<groupId>com.hwsafe</groupId>
-			<artifactId>service-equipment</artifactId>
-			<version>${hwsafe.version}</version>
-		</dependency>
-		<!--公共设施 园区 -->
-		<dependency>
-			<groupId>com.hwsafe</groupId>
-			<artifactId>service-publics</artifactId>
-			<version>${hwsafe.version}</version>
-		</dependency>
-		<!--疫情复工服务 -->
-		<dependency>
-			<groupId>com.hwsafe</groupId>
-			<artifactId>serivice-resumption-work-person</artifactId>
-			<version>${hwsafe.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.hwsafe</groupId>
-			<artifactId>service-qurtz</artifactId>
-			<version>${hwsafe.version}</version>
-		</dependency>
+
+
+
 
 
 	</dependencies>

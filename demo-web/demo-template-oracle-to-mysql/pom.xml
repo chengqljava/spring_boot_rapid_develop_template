@@ -4,13 +4,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>com.hwsafe</groupId>
-		<artifactId>webs</artifactId>
-		<version>0.0.1</version>
+		<groupId>com.chengql</groupId>
+		<artifactId>demo-webs</artifactId>
+		<version>1.0.0</version>
 	</parent>
 	<artifactId>demo-template-oracle-to-mysql</artifactId>
 	<name>demo-template-oracle-to-mysql</name>
-	<description> oracel 转化 mysql </description>
+	<description>oracel 转化为mysql</description>
 
 	<dependencies>
 		<dependency>
@@ -46,6 +46,11 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>ojdbc6</artifactId>
+			<version>${ojdbc6.version}</version>
 		</dependency>
 		<!-- 引入 spring aop 依赖 -->
 		<dependency>
@@ -84,9 +89,9 @@
 			<version>${swagger.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>com.hwsafe</groupId>
+			<groupId>com.chengql</groupId>
 			<artifactId>common-utils</artifactId>
-			<version>${hwsafe.version}</version>
+			<version>${chengql.version}</version>
 		</dependency>
 		<!-- beetl模版框架 -->
 		<dependency>
@@ -123,13 +128,7 @@
 			<artifactId>spring-boot-starter-amqp</artifactId>
 		</dependency>
 		<!--引入服务 -->
-		<dependency>
-			<groupId>com.hwsafe</groupId>
-			<artifactId>demo-template-service</artifactId>
-			<version>${hwsafe.version}</version>
-		</dependency>
-
-
+		
 
 
 	</dependencies>
@@ -140,7 +139,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<mainClass>com.hwsafe.enterprise.EnterpriseApplication</mainClass>
+					<mainClass>com.chengql.template.TemplateTenantApplication</mainClass>
 				</configuration>
 				<executions>
 					<execution>

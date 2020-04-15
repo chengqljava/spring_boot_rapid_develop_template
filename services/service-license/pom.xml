@@ -26,9 +26,9 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.hwsafe</groupId>
+			<groupId>com.chengql</groupId>
 			<artifactId>common-utils</artifactId>
-			<version>${hwsafe.version}</version>
+			<version>${chengql.version}</version>
 		</dependency>
 	</dependencies>
 

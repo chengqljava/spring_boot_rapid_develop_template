@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>com.hwsafe</groupId>
+		<groupId>com.chengql</groupId>
 		<artifactId>apis</artifactId>
 		<version>1.0.0</version>
 	</parent>
@@ -83,9 +83,9 @@
 			<version>${swagger.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>com.hwsafe</groupId>
+			<groupId>com.chengql</groupId>
 			<artifactId>common-utils</artifactId>
-			<version>${hwsafe.version}</version>
+			<version>${chengql.version}</version>
 		</dependency>
 		<!-- beetl模版框架 -->
 		<!-- <dependency> -->
@@ -137,7 +137,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<mainClass>com.hwsafe.weixin.WxApplication</mainClass>
+					<mainClass>com.chengql.weixin.WxApplication</mainClass>
 				</configuration>
 				<executions>
 					<execution>
